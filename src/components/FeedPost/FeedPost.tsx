@@ -4,10 +4,10 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
-import colors from '../../theme/colors';
 import styles from './styles';
-import {IPost} from '../../types/models';
-import Comment from '../Comment';
+import Comment from '~/components/Comment';
+import colors from '~/theme/colors';
+import {IPost} from '~/types/models';
 
 //no typescript, precisamos especificar o tipo dos parametros dos componentes
 interface IFeedPost {

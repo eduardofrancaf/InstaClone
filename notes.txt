@@ -1,0 +1,53 @@
+2.1 Initialize the React Native project
+2. Project Setup
+
+Initialize the project
+$ npx react-native init InstagramPrepTS --template react-native-template-typescript
+
+CLI Commands
+start development server
+$ npm start
+
+start a clean, fresh development server by resetting the cache
+$ npm start -- --reset-cache
+
+run the app on an android device/emulator
+$ npm run android
+
+Install Pods (macOS users only)
+$ npx pod-install ios 
+
+run the app on an iOS device/simulator
+npm run ios
+
+babel.config.js
+module.exports = {
+ presets: [
+   [
+     'module:metro-react-native-babel-preset',
+     {useTransformReactJSXExperimental: true},
+   ],
+ ],
+ plugins: [
+   [
+     '@babel/plugin-transform-react-jsx',
+     {
+       runtime: 'automatic',
+     },
+   ],
+ ],
+};
+
+########################################################################################################################
+
+Git commands
+Initialize a new git repo
+$ git init
+Check the status of your repo
+$ git status
+Add files to the staging area (use a dot to add all files)
+$ git add file1 file2
+$ git add directoryA
+$ git add .
+Commit all changes from the staging area
+git commit -m "commit message"

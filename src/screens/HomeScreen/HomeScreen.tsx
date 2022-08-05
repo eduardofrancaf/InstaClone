@@ -1,7 +1,7 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import posts from '../../assets/data/posts.json';
-import FeedPost from '../../components/FeedPost';
+import FeedPost from '~/components/FeedPost';
+import posts from '~/assets/data/posts.json';
 
 export default function HomeScreen() {
   return (
