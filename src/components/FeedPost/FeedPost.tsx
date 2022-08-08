@@ -9,6 +9,7 @@ import Comment from '~/components/Comment';
 import colors from '~/theme/colors';
 import {IPost} from '~/types/models';
 import DoublePressable from '~/components/DoublePressable';
+import Carousel from '~/components/Carousel';
 
 //no typescript, precisamos especificar o tipo dos parametros dos componentes
 interface IFeedPostProps {
@@ -31,6 +32,28 @@ export default function FeedPost({post}: IFeedPostProps) {
     setIsLiked(v => !v);
   };
 
+  const content = () => {
+    if (post.image) {
+      return (
+        <DoublePressable onDoublePress={onImageDoublePress}>
+          <Image
+            style={styles.image}
+            source={{
+              uri: post.image,
+            }}
+          />
+        </DoublePressable>
+      );
+    } else {
+      return (
+        <Carousel
+          images={post.images || []}
+          onDoublePress={onImageDoublePress}
+        />
+      );
+    }
+  };
+
   return (
     <View style={styles.post}>
       {/* Header */}
@@ -49,14 +72,7 @@ export default function FeedPost({post}: IFeedPostProps) {
         />
       </View>
       {/* Content */}
-      <DoublePressable onDoublePress={onImageDoublePress}>
-        <Image
-          style={styles.image}
-          source={{
-            uri: post.image,
-          }}
-        />
-      </DoublePressable>
+      {content()}
       <View style={styles.footer}>
         <View style={styles.iconContainer}>
           <Pressable onPress={toggleLiked}>
@@ -80,7 +96,7 @@ export default function FeedPost({post}: IFeedPostProps) {
         </View>
         <Text style={styles.text}>
           Liked by <Text style={styles.bold}>aloabao</Text> and
-          <Text style={styles.bold}>{post.nofLikes} others</Text>
+          <Text style={styles.bold}> {post.nofLikes} others</Text>
         </Text>
         <Text numberOfLines={isDescriptionExpanded ? 0 : 2} style={styles.text}>
           <Text style={styles.bold}>{post.user.username}</Text>
