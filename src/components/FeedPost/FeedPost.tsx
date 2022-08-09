@@ -99,7 +99,7 @@ export default function FeedPost({post}: IFeedPostProps) {
           <Text style={styles.bold}> {post.nofLikes} others</Text>
         </Text>
         <Text numberOfLines={isDescriptionExpanded ? 0 : 2} style={styles.text}>
-          <Text style={styles.bold}>{post.user.username}</Text>
+          <Text style={styles.bold}>{post.user.username} </Text>
           {post.description}
         </Text>
         <Text onPress={toggleDescriptionExpanded}>

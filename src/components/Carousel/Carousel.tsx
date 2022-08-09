@@ -8,13 +8,11 @@ interface ICarouselProps {
   images: string[];
   onDoublePress?: () => void;
 }
-
 export default function Carousel({
   images,
   onDoublePress = () => {},
 }: ICarouselProps) {
   const [viewableImage, setViewableImage] = useState(0);
-
   const renderItem = ({item}: {item: string}) => {
     return (
       <DoublePressable onDoublePress={onDoublePress}>

@@ -1,6 +1,17 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import HomeScreen from './src/screens/HomeScreen';
+
+if (__DEV__) {
+  import('./ReactotronConfig');
+}
+
+declare global {
+  interface Console {
+    tron: any;
+  }
+}
+
 const App = () => {
   return (
     <View style={styles.app}>
