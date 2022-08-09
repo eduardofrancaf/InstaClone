@@ -10,16 +10,17 @@ import colors from '~/theme/colors';
 import {IPost} from '~/types/models';
 import DoublePressable from '~/components/DoublePressable';
 import Carousel from '~/components/Carousel';
+import VideoPlayer from '~/components/VideoPlayer';
 
 //no typescript, precisamos especificar o tipo dos parametros dos componentes
 interface IFeedPostProps {
   post: IPost;
+  isVisible: boolean;
 }
 
-export default function FeedPost({post}: IFeedPostProps) {
+export default function FeedPost({post, isVisible}: IFeedPostProps) {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-
   const toggleDescriptionExpanded = () => {
     setIsDescriptionExpanded(v => !v);
   };
@@ -44,12 +45,18 @@ export default function FeedPost({post}: IFeedPostProps) {
           />
         </DoublePressable>
       );
-    } else {
+    } else if (post.images) {
       return (
         <Carousel
           images={post.images || []}
           onDoublePress={onImageDoublePress}
         />
+      );
+    } else {
+      return (
+        <DoublePressable onDoublePress={onImageDoublePress}>
+          <VideoPlayer uri={post.video} paused={!isVisible} />
+        </DoublePressable>
       );
     }
   };
