@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import HomeScreen from './src/screens/HomeScreen';
+import CommentsScreen from '~/screens/CommentsScreen';
 
 if (__DEV__) {
   import('./ReactotronConfig');
@@ -15,7 +16,8 @@ declare global {
 const App = () => {
   return (
     <View style={styles.app}>
-      <HomeScreen />
+      {/* <HomeScreen /> */}
+      <CommentsScreen />
     </View>
   );
 };
