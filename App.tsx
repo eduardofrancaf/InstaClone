@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import HomeScreen from './src/screens/HomeScreen';
 import CommentsScreen from '~/screens/CommentsScreen';
+import ProfileScreen from '~/screens/ProfileScreen';
 
 if (__DEV__) {
   import('./ReactotronConfig');
@@ -17,7 +18,8 @@ const App = () => {
   return (
     <View style={styles.app}>
       {/* <HomeScreen /> */}
-      <CommentsScreen />
+      {/* <CommentsScreen /> */}
+      <ProfileScreen />
     </View>
   );
 };

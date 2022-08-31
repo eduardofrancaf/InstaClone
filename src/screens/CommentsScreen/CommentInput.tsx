@@ -7,7 +7,6 @@ export default function CommentInput() {
   const [comment, setComment] = useState('');
 
   const sendComment = () => {
-    console.log(comment);
     setComment('');
   };
 
