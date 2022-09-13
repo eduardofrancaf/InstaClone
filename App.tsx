@@ -1,8 +1,10 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import HomeScreen from './src/screens/HomeScreen';
 import CommentsScreen from '~/screens/CommentsScreen';
 import ProfileScreen from '~/screens/ProfileScreen';
+import EditProfileScreen from '~/screens/EditProfileScreen';
+import PostUploadScreen from '~/screens/PostUploadScreen';
 
 if (__DEV__) {
   import('./ReactotronConfig');
@@ -16,11 +18,13 @@ declare global {
 
 const App = () => {
   return (
-    <View style={styles.app}>
+    <SafeAreaView style={styles.app}>
       {/* <HomeScreen /> */}
       {/* <CommentsScreen /> */}
-      <ProfileScreen />
-    </View>
+      {/* <ProfileScreen /> */}
+      {/* <EditProfileScreen /> */}
+      <PostUploadScreen />
+    </SafeAreaView>
   );
 };
 

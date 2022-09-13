@@ -25,9 +25,11 @@ export default function CommentInput() {
         placeholder="Write your comment"
         multiline
       />
-      <Text onPress={sendComment} style={styles.postButton}>
-        POST
-      </Text>
+      <View style={styles.postButtonContainer}>
+        <Text onPress={sendComment} style={styles.postButton}>
+          POST
+        </Text>
+      </View>
     </View>
   );
 }
@@ -58,11 +60,13 @@ const styles = StyleSheet.create({
     paddingRight: 50,
   },
   postButton: {
-    textAlignVertical: 'center',
     fontWeight: fonts.weight.semi,
     color: colors.primary,
+  },
+  postButtonContainer: {
     position: 'absolute',
     height: '100%',
     right: 15,
+    justifyContent: 'center',
   },
 });
