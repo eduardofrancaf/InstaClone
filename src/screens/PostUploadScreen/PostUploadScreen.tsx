@@ -61,6 +61,7 @@ const PostUploadScreen = () => {
   };
 
   const takePicture = async () => {
+   
     if (!isCameraReady || !camera.current) {
       return;
     }

@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+     <uses-permission android:name="android.permission.INTERNET" />
+  <!-- Added permissions -->
+  <uses-permission android:name="android.permission.CAMERA" />
+  <!-- Optional permissions -->
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:usesCleartextTraffic="true"
