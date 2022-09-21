@@ -1,10 +1,11 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {  StyleSheet, View } from 'react-native';
 import HomeScreen from './src/screens/HomeScreen';
 import CommentsScreen from '~/screens/CommentsScreen';
 import ProfileScreen from '~/screens/ProfileScreen';
 import EditProfileScreen from '~/screens/EditProfileScreen';
 import PostUploadScreen from '~/screens/PostUploadScreen';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 if (__DEV__) {
   import('./ReactotronConfig');
@@ -29,7 +30,7 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  app: {flex: 1},
+  app: { flex: 1 },
 });
 
 export default App;

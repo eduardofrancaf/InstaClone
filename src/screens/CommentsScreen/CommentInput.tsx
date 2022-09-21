@@ -1,5 +1,5 @@
-import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import colors from '~/theme/colors';
 import fonts from '~/theme/fonts';
 
