@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import { AntDesign } from '@expo/vector-icons';
 import {Text, View, StyleSheet, Image, Pressable} from 'react-native';
 import {IComment} from '~/types/models';
 import colors from '~/theme/colors';

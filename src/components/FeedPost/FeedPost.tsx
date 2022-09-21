@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {Image, View, Text, Pressable} from 'react-native';
-import Entypo from 'react-native-vector-icons/Entypo';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
+import {Entypo} from '@expo/vector-icons';
+import {AntDesign} from '@expo/vector-icons';
+import {Ionicons} from '@expo/vector-icons';
+import {Feather} from '@expo/vector-icons';
 import styles from './styles';
 import Comment from '~/components/Comment';
 import colors from '~/theme/colors';

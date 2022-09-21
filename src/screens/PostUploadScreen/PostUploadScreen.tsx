@@ -1,17 +1,27 @@
 /* eslint-disable react-native/no-inline-styles */
-import { View, Text, StyleSheet, Pressable } from 'react-native';
-import React, { useEffect, useRef, useState } from 'react';
-import { Camera, CameraType, FlashMode, CameraPictureOptions } from 'expo-camera';
-import colors from '~/theme/colors';
-import { MaterialIcons } from '@expo/vector-icons';
+import React, { useEffect, useRef, useState } from "react";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import {
+  Camera,
+  CameraType,
+  FlashMode,
+  CameraPictureOptions,
+} from "expo-camera";
+import colors from "~/theme/colors";
+import { MaterialIcons } from "@expo/vector-icons";
 
-const flashModes = [FlashMode.off, FlashMode.on, FlashMode.auto, FlashMode.torch];
+const flashModes = [
+  FlashMode.off,
+  FlashMode.on,
+  FlashMode.auto,
+  FlashMode.torch,
+];
 
 const flashModeToIcon = {
-  [FlashMode.off]: 'flash-off',
-  [FlashMode.on]: 'flash-on',
-  [FlashMode.auto]: 'flash-auto',
-  [FlashMode.torch]: 'highlight',
+  [FlashMode.off]: "flash-off",
+  [FlashMode.on]: "flash-on",
+  [FlashMode.auto]: "flash-auto",
+  [FlashMode.torch]: "highlight",
 };
 
 const PostUploadScreen = () => {
@@ -26,7 +36,8 @@ const PostUploadScreen = () => {
       const cameraPermission = await Camera.requestCameraPermissionsAsync();
       const micPermission = await Camera.requestMicrophonePermissionsAsync();
       setHasPermissions(
-        cameraPermission.status === 'granted' && micPermission.status === 'granted'
+        cameraPermission.status === "granted" &&
+          micPermission.status === "granted"
       );
     };
     getPermissions();
@@ -47,7 +58,8 @@ const PostUploadScreen = () => {
 
   const flipFlash = () => {
     const currentFlashIndex = flashModes.indexOf(flash);
-    const nextFlashIndex = currentFlashIndex === flashModes.length - 1 ? 0 : currentFlashIndex + 1;
+    const nextFlashIndex =
+      currentFlashIndex === flashModes.length - 1 ? 0 : currentFlashIndex + 1;
     setFlash(flashModes[nextFlashIndex]);
   };
 
@@ -77,7 +89,11 @@ const PostUploadScreen = () => {
       <View style={[styles.buttonsContainer, { top: 25 }]}>
         <MaterialIcons name="close" color={colors.white} size={30} />
         <Pressable onPress={flipFlash}>
-          <MaterialIcons name={flashModeToIcon[flash]} color={colors.white} size={30} />
+          <MaterialIcons
+            name={flashModeToIcon[flash]}
+            color={colors.white}
+            size={30}
+          />
         </Pressable>
         <MaterialIcons name="settings" color={colors.white} size={30} />
       </View>
@@ -94,7 +110,11 @@ const PostUploadScreen = () => {
           />
         </Pressable>
         <Pressable onPress={flipCamera}>
-          <MaterialIcons name="flip-camera-ios" color={colors.white} size={30} />
+          <MaterialIcons
+            name="flip-camera-ios"
+            color={colors.white}
+            size={30}
+          />
         </Pressable>
       </View>
     </View>
@@ -102,17 +122,21 @@ const PostUploadScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', backgroundColor: colors.black },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: colors.black,
+  },
   camera: {
-    width: '100%',
+    width: "100%",
     aspectRatio: 3 / 4,
   },
   buttonsContainer: {
-    flexDirection: 'row',
-    width: '100%',
-    alignItems: 'center',
-    position: 'absolute',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center",
+    position: "absolute",
+    justifyContent: "space-around",
   },
 });
 
