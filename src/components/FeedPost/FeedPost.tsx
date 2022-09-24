@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
-import {Image, View, Text, Pressable} from 'react-native';
-import {Entypo} from '@expo/vector-icons';
-import {AntDesign} from '@expo/vector-icons';
-import {Ionicons} from '@expo/vector-icons';
-import {Feather} from '@expo/vector-icons';
-import styles from './styles';
-import Comment from '~/components/Comment';
-import colors from '~/theme/colors';
-import {IPost} from '~/types/models';
-import DoublePressable from '~/components/DoublePressable';
-import Carousel from '~/components/Carousel';
-import VideoPlayer from '~/components/VideoPlayer';
+import React, { useState } from "react";
+import { Image, View, Text, Pressable } from "react-native";
+import { Entypo } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
+import styles from "./styles";
+import Comment from "~/components/Comment";
+import colors from "~/theme/colors";
+import { IPost } from "~/types/models";
+import DoublePressable from "~/components/DoublePressable";
+import Carousel from "~/components/Carousel";
+import VideoPlayer from "~/components/VideoPlayer";
 
 //no typescript, precisamos especificar o tipo dos parametros dos componentes
 interface IFeedPostProps {
@@ -18,19 +18,19 @@ interface IFeedPostProps {
   isVisible: boolean;
 }
 
-export default function FeedPost({post, isVisible}: IFeedPostProps) {
+export default function FeedPost({ post, isVisible }: IFeedPostProps) {
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const toggleDescriptionExpanded = () => {
-    setIsDescriptionExpanded(v => !v);
+    setIsDescriptionExpanded((v) => !v);
   };
 
   const toggleLiked = () => {
-    setIsLiked(v => !v);
+    setIsLiked((v) => !v);
   };
 
   const onImageDoublePress = () => {
-    setIsLiked(v => !v);
+    setIsLiked((v) => !v);
   };
 
   const content = () => {
@@ -84,11 +84,11 @@ export default function FeedPost({post, isVisible}: IFeedPostProps) {
         <View style={styles.iconContainer}>
           <Pressable onPress={toggleLiked}>
             <AntDesign
-              name={isLiked ? 'heart' : 'hearto'}
+              name={isLiked ? "heart" : "hearto"}
               size={24}
               style={[
                 styles.icon,
-                {color: isLiked ? colors.accent : colors.black},
+                { color: isLiked ? colors.accent : colors.black },
               ]}
             />
           </Pressable>
@@ -98,7 +98,7 @@ export default function FeedPost({post, isVisible}: IFeedPostProps) {
             name="bookmark"
             size={24}
             // eslint-disable-next-line react-native/no-inline-styles
-            style={{marginLeft: 'auto', color: colors.black}}
+            style={{ marginLeft: "auto", color: colors.black }}
           />
         </View>
         <Text style={styles.text}>
@@ -110,10 +110,10 @@ export default function FeedPost({post, isVisible}: IFeedPostProps) {
           {post.description}
         </Text>
         <Text onPress={toggleDescriptionExpanded}>
-          {isDescriptionExpanded ? 'Less' : 'More'}
+          {isDescriptionExpanded ? "Less" : "More"}
         </Text>
         <Text>View all {post.nofComments} comments</Text>
-        {post.comments.map(comment => {
+        {post.comments.map((comment) => {
           return <Comment key={comment.id} comment={comment} />;
         })}
         <Text>{post.createdAt}</Text>

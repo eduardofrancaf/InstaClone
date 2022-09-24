@@ -6,6 +6,7 @@ import {
   CameraType,
   FlashMode,
   CameraPictureOptions,
+  CameraRecordingOptions,
 } from "expo-camera";
 import colors from "~/theme/colors";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -29,6 +30,7 @@ const PostUploadScreen = () => {
   const [cameraType, setCameraType] = useState(CameraType.back);
   const [flash, setFlash] = useState(FlashMode.off);
   const [isCameraReady, setIsCameraReady] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
   const camera = useRef<Camera>(null);
 
   useEffect(() => {
@@ -68,12 +70,41 @@ const PostUploadScreen = () => {
       return;
     }
     const options: CameraPictureOptions = {
-      quality: 0.7,
+      quality: 0.5,
       base64: false,
       skipProcessing: true,
     };
     const result = await camera.current.takePictureAsync(options);
-    console.log(result);
+    console.tron.log(result);
+  };
+
+  const onStartRecording = async () => {
+    if (!isCameraReady || !camera.current || isRecording) {
+      return;
+    }
+    const options: CameraRecordingOptions = {
+      quality: Camera.Constants.VideoQuality["640:480"],
+      maxDuration: 60,
+      maxFileSize: 10 * 1024 * 1024,
+      mute: false,
+    };
+    try {
+      console.log("started");
+      setIsRecording(true);
+      const result = await camera.current.recordAsync(options);
+      console.tron.log(result);
+    } catch (error) {
+      console.tron.log(error);
+    }
+    console.log("parou");
+    setIsRecording(false);
+  };
+
+  const onStopRecording = () => {
+    if (isRecording) {
+      console.log("finished");
+      setIsRecording(false);
+    }
   };
 
   return (
@@ -99,13 +130,17 @@ const PostUploadScreen = () => {
       </View>
       <View style={[styles.buttonsContainer, { bottom: 25 }]}>
         <MaterialIcons name="photo-library" color={colors.white} size={30} />
-        <Pressable onPress={takePicture}>
+        <Pressable
+          onPress={takePicture}
+          onLongPress={onStartRecording}
+          onPressOut={onStopRecording}
+        >
           <View
             style={{
-              width: 50,
+              width: 70,
               aspectRatio: 1,
-              borderRadius: 25,
-              backgroundColor: colors.white,
+              borderRadius: 35,
+              backgroundColor: isRecording ? "red" : colors.white,
             }}
           />
         </Pressable>
