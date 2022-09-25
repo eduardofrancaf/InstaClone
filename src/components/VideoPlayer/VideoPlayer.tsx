@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, View } from "react-native";
 import React, { useState } from "react";
-import Video from "react-native-video";
+import { ResizeMode, Video } from "expo-av";
 import { Ionicons } from "@expo/vector-icons";
 import colors from "~/theme/colors";
 
@@ -11,16 +11,15 @@ interface IVideoPlayerProps {
 
 export default function VideoPlayer({ uri, paused }: IVideoPlayerProps) {
   const [isMuted, setIsMuted] = useState(true);
-
   return (
     <View>
       <Video
         style={styles.video}
         source={{ uri }}
-        resizeMode="stretch"
-        repeat={true}
-        muted={isMuted}
-        paused={paused}
+        resizeMode={ResizeMode.STRETCH}
+        isLooping={true}
+        isMuted={isMuted}
+        shouldPlay={!paused}
       />
       <Pressable
         style={styles.containerIcon}

@@ -75,7 +75,7 @@ const PostUploadScreen = () => {
       skipProcessing: true,
     };
     const result = await camera.current.takePictureAsync(options);
-    console.tron.log(result);
+    console.log(result);
   };
 
   const onStartRecording = async () => {
@@ -92,7 +92,7 @@ const PostUploadScreen = () => {
       console.log("started");
       setIsRecording(true);
       const result = await camera.current.recordAsync(options);
-      console.tron.log(result);
+      console.log(result);
     } catch (error) {
       console.tron.log(error);
     }

@@ -1,11 +1,7 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import HomeScreen from "./src/screens/HomeScreen";
-import CommentsScreen from "~/screens/CommentsScreen";
-import ProfileScreen from "~/screens/ProfileScreen";
-import EditProfileScreen from "~/screens/EditProfileScreen";
-import PostUploadScreen from "~/screens/PostUploadScreen";
-import { SafeAreaView } from "react-native";
+import { StyleSheet } from "react-native";
+import { SafeAreaView, StatusBar } from "react-native";
+import Navigation from "~/navigation";
 
 if (__DEV__) {
   import("./ReactotronConfig");
@@ -20,17 +16,17 @@ declare global {
 const App = () => {
   return (
     <SafeAreaView style={styles.app}>
-      {/* <HomeScreen /> */}
-      {/* <CommentsScreen /> */}
-      {/* <ProfileScreen /> */}
-      {/* <EditProfileScreen /> */}
-      <PostUploadScreen />
+      {/* wrap navigators with NavigationContainer */}
+      <Navigation />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  app: { flex: 1 },
+  app: {
+    flex: 1,
+    // marginTop: StatusBar.currentHeight
+  },
 });
 
 export default App;

@@ -1,4 +1,16 @@
 {
   "name": "InstaClone",
-  "displayName": "InstaClone"
+  "displayName": "InstaClone",
+  "expo": {
+    "name": "InstaClone",
+    "slug": "instaclone",
+    "sdkVersion": "46.0.0",
+    "owner": "eduardofranca",
+    "android": {
+      "package": "com.eduardofranca.instaclone"
+    }
+  },
+  "android": {
+    "package": "com.eduardofranca.instaclone"
+  }
 }
